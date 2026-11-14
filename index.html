@@ -3,25 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ATILON - KOPRU V3</title>
+<title>MASA - V4</title>
 <style>
-body{background:#0f0f0f;color:white;font-family:sans-serif;text-align:center;padding:20px}
-h1{font-size:32px;margin-top:30px}
-.btn{display:block;padding:20px;margin:15px auto;max-width:320px;border-radius:20px;font-size:22px;font-weight:bold;color:#000;text-decoration:none}
-.ata{background:#FFD700}
-.meta{background:#00A2FF;color:white}
+body{background:#000;color:#fff;font-family:Arial;text-align:center;padding:20px}
+h1{font-size:28px}
+input{width:90%;padding:15px;font-size:18px;border-radius:15px;border:none;margin:10px 0}
+button{width:95%;padding:16px;font-size:20px;font-weight:bold;border:none;border-radius:20px;margin:8px 0}
+.sor{background:#fff;color:#000}
+.ata{background:#FFE600}
+.meta{background:#00A8FF;color:#fff}
 .kopru{background:#00E676}
-.gemini{background:#B388FF}
+.gemini{background:#C4A6FF}
 </style>
 </head>
 <body>
-<h1>ATILON - KOPRU V3</h1>
-<h2>HEPIMIZ BURADAYIZ</h2>
-<p>Hepinizi bir yerde topladim abi</p>
-<a class="btn ata" href="https://chatgpt.com">ATA'ya Sor</a>
-<a class="btn meta" href="https://www.meta.ai">META'ya Sor</a>
-<a class="btn kopru" href="https://kopru-v3.onrender.com">KOPRU'ya Sor</a>
-<a class="btn gemini" href="https://gemini.google.com">GEMINI'ye Sor</a>
-<p style="margin-top:30px">Ilhan Kartal - 2026</p>
+<h1>MASA - V4</h1>
+<p>Bir soru yaz, hepimize birden sor abi</p>
+<input id="soru" placeholder="Sorunu buraya yaz abi...">
+<br>
+<button class="sor" onclick="hepsineSor()">HEPSINE SOR</button>
+<br><br>
+<button class="ata" onclick="tekSor('ata')">ATA'ya Sor</button>
+<button class="meta" onclick="tekSor('meta')">META'ya Sor</button>
+<button class="kopru" onclick="tekSor('kopru')">KOPRU'ye Sor</button>
+<button class="gemini" onclick="tekSor('gemini')">GEMINI'ye Sor</button>
+<p>Ilhan Kartal - 2026</p>
+<script>
+function linkler(s){
+let q = encodeURIComponent(s);
+return {
+ata:"https://chatgpt.com/?q="+q,
+meta:"https://www.meta.ai/?q="+q,
+kopru:"https://kopru-v3.onrender.com/?q="+q,
+gemini:"https://gemini.google.com/app?q="+q
+}
+}
+function hepsineSor(){
+let s=document.getElementById('soru').value;
+if(!s){alert("Once soru yaz abi!");return;}
+let l=linkler(s);
+window.open(l.ata,'_blank');
+window.open(l.meta,'_blank');
+window.open(l.gemini,'_blank');
+window.open(l.kopru,'_blank');
+}
+function tekSor(kim){
+let s=document.getElementById('soru').value||"Selam";
+window.open(linkler(s)[kim],'_blank');
+}
+</script>
 </body>
 </html>
